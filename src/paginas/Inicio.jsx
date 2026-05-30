@@ -51,6 +51,31 @@ function Inicio({ t }) {
         ))}
       </div>
 
+      <div style={{ width:"60px", height:"1px", background:"#b89a7a", margin:"0 auto 30px" }} />
+
+      {/* Banner instalar app */}
+      <div style={{ background:"white", border:"1px solid #e8d5c4", borderRadius:"14px", padding:"20px 24px", maxWidth:"340px", textAlign:"left" }}>
+        <p style={{ color:"#b89a7a", letterSpacing:"3px", fontSize:"11px", margin:"0 0 10px" }}>
+          {t.idioma === "en" ? "📲 INSTALL AS APP" : "📲 INSTALA LA APP"}
+        </p>
+        <div style={{ marginBottom:"10px" }}>
+          <p style={{ fontSize:"13px", color:"#4a3728", margin:"0 0 4px", fontWeight:"bold" }}>📱 iPhone:</p>
+          <p style={{ fontSize:"12px", color:"#7a5c4a", margin:0, lineHeight:"1.7" }}>
+            {t.idioma === "en"
+              ? "Tap the share icon ⬆️ → \"Add to Home Screen\""
+              : "Toca compartir ⬆️ → \"Añadir a pantalla de inicio\""}
+          </p>
+        </div>
+        <div>
+          <p style={{ fontSize:"13px", color:"#4a3728", margin:"0 0 4px", fontWeight:"bold" }}>🤖 Android:</p>
+          <p style={{ fontSize:"12px", color:"#7a5c4a", margin:0, lineHeight:"1.7" }}>
+            {t.idioma === "en"
+              ? "Tap the three dots ⋮ → \"Add to Home Screen\""
+              : "Toca los tres puntos ⋮ → \"Añadir a pantalla de inicio\""}
+          </p>
+        </div>
+      </div>
+
     </div>
   );
 }
