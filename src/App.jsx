@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, createContext } from "react";
 import Inicio from "./paginas/Inicio";
 import Lugar from "./paginas/Lugar";
 import Regalo from "./paginas/Regalo";
@@ -11,46 +11,62 @@ import Transporte from "./paginas/Transporte";
 import RetoFotos from "./paginas/RetoFotos";
 import Ruleta from "./paginas/Ruleta";
 import Sorteo from "./paginas/Sorteo";
+import { textos } from "./traducciones";
 
-const tabs = [
-  { id:"inicio", label:"Inicio", emoji:"💍" },
-  { id:"programa", label:"Programa", emoji:"🕐" },
-  { id:"lugar", label:"Lugar", emoji:"📍" },
-  { id:"menu", label:"Menú", emoji:"🍽️" },
-  { id:"transporte", label:"Transporte", emoji:"🚌" },
-  { id:"confirmacion", label:"Asistencia", emoji:"✅" },
-  { id:"regalo", label:"Regalo", emoji:"🏦" },
-  { id:"galeria", label:"Fotos", emoji:"📷" },
-  { id:"mensajes", label:"Mensajes", emoji:"💬" },
-  { id:"reto", label:"Reto", emoji:"📸" },
-  { id:"ruleta", label:"Ruleta", emoji:"🎡" },
-  { id:"sorteo", label:"Sorteo", emoji:"🔒" },
+export const IdiomaContext = createContext("es");
+
+const getTabs = (t) => [
+  { id:"inicio", label: t.inicio, emoji:"💍" },
+  { id:"programa", label: t.programa, emoji:"🕐" },
+  { id:"lugar", label: t.lugar, emoji:"📍" },
+  { id:"menu", label: t.menu, emoji:"🍽️" },
+  { id:"transporte", label: t.transporte, emoji:"🚌" },
+  { id:"confirmacion", label: t.confirmacion, emoji:"✅" },
+  { id:"regalo", label: t.regalo, emoji:"🏦" },
+  { id:"galeria", label: t.galeria, emoji:"📷" },
+  { id:"mensajes", label: t.mensajes, emoji:"💬" },
+  { id:"reto", label: t.reto, emoji:"📸" },
+  { id:"ruleta", label: t.ruleta, emoji:"🎡" },
+  { id:"sorteo", label: t.sorteo, emoji:"🔒" },
 ];
 
 function App() {
   const [paginaActual, setPaginaActual] = useState("inicio");
+  const [idioma, setIdioma] = useState("es");
+  const t = textos[idioma];
+  const tabs = getTabs(t);
 
   const renderPagina = () => {
     switch (paginaActual) {
-      case "inicio": return <Inicio />;
-      case "lugar": return <Lugar />;
-      case "regalo": return <Regalo />;
-      case "confirmacion": return <Confirmacion />;
-      case "galeria": return <Galeria />;
-      case "mensajes": return <Mensajes />;
-      case "menu": return <MenuBoda />;
-      case "programa": return <Programa />;
-      case "transporte": return <Transporte />;
-      case "reto": return <RetoFotos />;
-      case "ruleta": return <Ruleta />;
-      case "sorteo": return <Sorteo />;
-      default: return <Inicio />;
+      case "inicio": return <Inicio t={t} />;
+      case "lugar": return <Lugar t={t} />;
+      case "regalo": return <Regalo t={t} />;
+      case "confirmacion": return <Confirmacion t={t} />;
+      case "galeria": return <Galeria t={t} />;
+      case "mensajes": return <Mensajes t={t} />;
+      case "menu": return <MenuBoda t={t} />;
+      case "programa": return <Programa t={t} />;
+      case "transporte": return <Transporte t={t} />;
+      case "reto": return <RetoFotos t={t} />;
+      case "ruleta": return <Ruleta t={t} />;
+      case "sorteo": return <Sorteo t={t} />;
+      default: return <Inicio t={t} />;
     }
   };
 
   return (
     <div style={{ fontFamily:"Georgia, serif", background:"#fdf6f0", minHeight:"100vh" }}>
+
+      <div style={{ position:"fixed", top:"12px", right:"12px", zIndex:1000 }}>
+        <button
+          onClick={() => setIdioma(idioma === "es" ? "en" : "es")}
+          style={{ background:"white", border:"1px solid #e8d5c4", borderRadius:"20px", padding:"6px 14px", fontSize:"13px", cursor:"pointer", color:"#4a3728", fontFamily:"Georgia, serif", boxShadow:"0 2px 8px rgba(0,0,0,0.1)" }}>
+          {idioma === "es" ? "🇬🇧 English" : "🇪🇸 Español"}
+        </button>
+      </div>
+
       {renderPagina()}
+
       <div style={{ position:"fixed", bottom:0, left:0, right:0, background:"white", borderTop:"1px solid #e8d5c4", display:"flex", overflowX:"auto", padding:"8px 0" }}>
         {tabs.map(tab => (
           <button key={tab.id} onClick={() => setPaginaActual(tab.id)}

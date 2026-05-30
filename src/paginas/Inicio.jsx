@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Inicio() {
+function Inicio({ t }) {
   const fechaBoda = new Date("2027-05-22T18:00:00");
 
   const calcularCuentaAtras = () => {
@@ -27,22 +27,22 @@ function Inicio() {
         <img src="/fotos/nosotros.jpg" alt="Gabriel y Vania" style={{ width:"100%", height:"100%", objectFit:"cover" }} />
       </div>
 
-      <p style={{ color:"#b89a7a", letterSpacing:"4px", fontSize:"13px", margin:"0 0 8px" }}>NOS CASAMOS</p>
+      <p style={{ color:"#b89a7a", letterSpacing:"4px", fontSize:"13px", margin:"0 0 8px" }}>{t.nosCasamos}</p>
 
       <h1 style={{ fontSize:"48px", color:"#4a3728", margin:"0 0 10px", fontWeight:"normal" }}>Gabriel & Vania</h1>
 
-      <p style={{ fontSize:"20px", color:"#7a5c4a", margin:"0 0 6px" }}>Sábado, 22 de mayo de 2027</p>
+      <p style={{ fontSize:"20px", color:"#7a5c4a", margin:"0 0 6px" }}>{t.fecha}</p>
 
-      <p style={{ fontSize:"16px", color:"#b89a7a", margin:"0 0 30px" }}>Ceremonia a las 18:00 h</p>
+      <p style={{ fontSize:"16px", color:"#b89a7a", margin:"0 0 30px" }}>{t.ceremonia}</p>
 
       <div style={{ width:"60px", height:"1px", background:"#b89a7a", margin:"0 auto 30px" }} />
 
       <div style={{ display:"flex", gap:"20px", marginBottom:"36px", flexWrap:"wrap", justifyContent:"center" }}>
         {[
-          { valor: cuenta.dias, label: "días" },
-          { valor: cuenta.horas, label: "horas" },
-          { valor: cuenta.minutos, label: "minutos" },
-          { valor: cuenta.segundos, label: "segundos" },
+          { valor: cuenta.dias, label: t.dias },
+          { valor: cuenta.horas, label: t.horas },
+          { valor: cuenta.minutos, label: t.minutos },
+          { valor: cuenta.segundos, label: t.segundos },
         ].map(({ valor, label }) => (
           <div key={label} style={{ background:"white", border:"1px solid #e8d5c4", borderRadius:"12px", padding:"16px 20px", minWidth:"70px" }}>
             <div style={{ fontSize:"32px", color:"#4a3728", fontWeight:"bold" }}>{valor}</div>
