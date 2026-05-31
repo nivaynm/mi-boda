@@ -11,6 +11,7 @@ import Transporte from "./paginas/Transporte";
 import RetoFotos from "./paginas/RetoFotos";
 import Ruleta from "./paginas/Ruleta";
 import Sorteo from "./paginas/Sorteo";
+import Invitados from "./paginas/Invitados";
 import { textos } from "./traducciones";
 
 export const IdiomaContext = createContext("es");
@@ -28,6 +29,7 @@ const getTabs = (t) => [
   { id:"reto", label: t.reto, emoji:"📸" },
   { id:"ruleta", label: t.ruleta, emoji:"🎡" },
   { id:"sorteo", label: t.sorteo, emoji:"🔒" },
+  { id:"invitados", label:"Invitados", emoji:"👥" },
 ];
 
 function App() {
@@ -50,6 +52,7 @@ function App() {
       case "reto": return <RetoFotos t={t} />;
       case "ruleta": return <Ruleta t={t} />;
       case "sorteo": return <Sorteo t={t} />;
+      case "invitados": return <Invitados t={t} />;
       default: return <Inicio t={t} />;
     }
   };

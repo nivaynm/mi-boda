@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { db } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 function Confirmacion({ t }) {
   const [nombre, setNombre] = useState("");
@@ -22,8 +24,22 @@ function Confirmacion({ t }) {
     setDatosAcompanantes(nuevos);
   };
 
-  const handleEnviar = () => {
-    if (nombre.trim()) setEnviado(true);
+  const handleEnviar = async () => {
+    if (!nombre.trim()) return;
+    try {
+      await addDoc(collection(db, "confirmaciones"), {
+        nombre: nombre.trim(),
+        acompanantes: acompanantes,
+        datosAcompanantes: datosAcompanantes,
+        autobus: autobus,
+        alergias: alergias.trim(),
+        platoPrincipal: platoPrincipal,
+        fecha: new Date()
+      });
+    } catch (e) {
+      console.log("Error guardando confirmación", e);
+    }
+    setEnviado(true);
   };
 
   const inputStyle = {
