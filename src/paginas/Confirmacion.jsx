@@ -83,7 +83,7 @@ function Confirmacion({ t }) {
           <p style={{ color:"#b89a7a", letterSpacing:"3px", fontSize:"11px", margin:"0 0 14px" }}>{t.acompanantes}</p>
           <p style={{ fontSize:"13px", color:"#7a5c4a", margin:"0 0 8px" }}>{t.cuantosVenis}</p>
           <select value={acompanantes} onChange={(e) => actualizarAcompanantes(e.target.value)} style={selectStyle}>
-            {[0,1,2,3,4,5,6,7,8].map(n => (
+            {[0,1,2,3,4].map(n => (
               <option key={n} value={n}>{n === 0 ? t.soloYo : `${n} acompañante${n > 1 ? "s" : ""}`}</option>
             ))}
           </select>
