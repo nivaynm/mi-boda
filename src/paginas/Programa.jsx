@@ -20,8 +20,12 @@ function Programa({ t }) {
   return (
     <div style={{ minHeight:"100vh", background:"#fdf6f0", fontFamily:"Georgia, serif", padding:"50px 20px 100px" }}>
       <div style={{ textAlign:"center", marginBottom:"40px" }}>
-        <p style={{ color:"#b89a7a", letterSpacing:"4px", fontSize:"12px", margin:"0 0 8px" }}>22 {t.idioma === "en" ? "MAY" : "DE MAYO DE"} 2027</p>
-        <h2 style={{ color:"#4a3728", fontSize:"28px", fontWeight:"normal", margin:0 }}>{t.idioma === "en" ? "Schedule" : "Programa del día"}</h2>
+        <p style={{ color:"#b89a7a", letterSpacing:"4px", fontSize:"12px", margin:"0 0 8px" }}>
+          29 {t.idioma === "en" ? "MAY" : "DE MAYO DE"} 2027
+        </p>
+        <h2 style={{ color:"#4a3728", fontSize:"28px", fontWeight:"normal", margin:0 }}>
+          {t.idioma === "en" ? "Schedule" : "Programa del día"}
+        </h2>
       </div>
 
       <div style={{ maxWidth:"480px", margin:"0 auto", position:"relative" }}>

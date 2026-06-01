@@ -16,7 +16,7 @@ export const textos = {
 
     // Inicio
     nosCasamos: "NOS CASAMOS",
-    fecha: "Sábado, 22 de mayo de 2027",
+    fecha: "Sábado, 29 de mayo de 2027",
     ceremonia: "Ceremonia a las 18:00 h",
     dias: "días",
     horas: "horas",
@@ -122,7 +122,7 @@ export const textos = {
 
     // Home
     nosCasamos: "WE'RE GETTING MARRIED",
-    fecha: "Saturday, 22nd May 2027",
+    fecha: "Saturday, 29th May 2027",
     ceremonia: "Ceremony at 6:00 PM",
     dias: "days",
     horas: "hours",

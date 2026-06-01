@@ -19,7 +19,7 @@ function RetoFotos({ t }) {
   const [nombre, setNombre] = useState("");
 
   const misiones = getMisiones(t);
-  const limiteHora = new Date("2027-05-22T22:00:00");
+  const limiteHora = new Date("2027-05-29T22:00:00");
   const tiempoAgotado = new Date() > limiteHora;
 
   const subirFoto = async (mision, archivo) => {

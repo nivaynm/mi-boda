@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function Inicio({ t }) {
-  const fechaBoda = new Date("2027-05-22T18:00:00");
+const fechaBoda = new Date("2027-05-29T18:00:00");
 
   const calcularCuentaAtras = () => {
     const ahora = new Date();
@@ -27,10 +27,9 @@ function Inicio({ t }) {
         <img src="/fotos/nosotros.jpg" alt="Gabriel y Vania" style={{ width:"100%", height:"100%", objectFit:"cover" }} />
       </div>
 
-      <p style={{ color:"#b89a7a", letterSpacing:"4px", fontSize:"11px", margin:"0 0 6px" }}>{t.nosCasamos}</p>
+<p style={{ color:"#b89a7a", letterSpacing:"4px", fontSize:"13px", margin:"0 0 6px" }}>{t.nosCasamos}</p>
 
-      <h1 style={{ fontSize:"36px", color:"#4a3728", margin:"0 0 8px", fontWeight:"normal" }}>Gabriel & Vania</h1>
-
+<p style={{ fontSize:"18px", color:"#7a5c4a", margin:"0 0 4px" }}>{t.fecha}</p>
       <p style={{ fontSize:"16px", color:"#7a5c4a", margin:"0 0 4px" }}>{t.fecha}</p>
 
       <p style={{ fontSize:"13px", color:"#b89a7a", margin:"0 0 20px" }}>{t.ceremonia}</p>
