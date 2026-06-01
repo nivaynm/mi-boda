@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function Inicio({ t }) {
-const fechaBoda = new Date("2027-05-29T18:00:00");
+  const fechaBoda = new Date("2027-05-29T18:00:00");
 
   const calcularCuentaAtras = () => {
     const ahora = new Date();
@@ -23,14 +23,14 @@ const fechaBoda = new Date("2027-05-29T18:00:00");
   return (
     <div style={{ minHeight:"100vh", background:"#fdf6f0", fontFamily:"Georgia, serif", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", padding:"30px 16px 100px", textAlign:"center" }}>
 
-      <div style={{ width:"140px", height:"140px", borderRadius:"50%", overflow:"hidden", border:"4px solid #b89a7a", marginBottom:"20px", background:"#e8d5c4" }}>
+      <div style={{ width:"160px", height:"160px", borderRadius:"50%", overflow:"hidden", border:"4px solid #b89a7a", marginBottom:"20px", background:"#e8d5c4" }}>
         <img src="/fotos/nosotros.jpg" alt="Gabriel y Vania" style={{ width:"100%", height:"100%", objectFit:"cover" }} />
       </div>
 
 <p style={{ color:"#b89a7a", letterSpacing:"4px", fontSize:"13px", margin:"0 0 6px" }}>{t.nosCasamos}</p>
 
+<h1 style={{ fontSize:"36px", color:"#4a3728", margin:"0 0 8px", fontWeight:"normal" }}>Gabriel & Vania</h1>
 <p style={{ fontSize:"18px", color:"#7a5c4a", margin:"0 0 4px" }}>{t.fecha}</p>
-      <p style={{ fontSize:"16px", color:"#7a5c4a", margin:"0 0 4px" }}>{t.fecha}</p>
 
       <p style={{ fontSize:"13px", color:"#b89a7a", margin:"0 0 20px" }}>{t.ceremonia}</p>
 
