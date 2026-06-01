@@ -70,10 +70,10 @@ function App() {
 
       {renderPagina()}
 
-<div style={{ 
-        position:"fixed", bottom:0, left:0, right:0, 
-        background:"white", borderTop:"1px solid #e8d5c4", 
-        display:"flex", overflowX:"auto", 
+      <div style={{
+        position:"fixed", bottom:0, left:0, right:0,
+        background:"white", borderTop:"1px solid #e8d5c4",
+        display:"flex", overflowX:"auto",
         padding:"4px 0 8px",
         WebkitOverflowScrolling:"touch",
         scrollbarWidth:"none",
@@ -81,15 +81,20 @@ function App() {
       }}>
         {tabs.map(tab => (
           <button key={tab.id} onClick={() => setPaginaActual(tab.id)}
-            style={{ 
-              background:"none", border:"none", cursor:"pointer", 
-              display:"flex", flexDirection:"column", alignItems:"center", 
+            style={{
+              background:"none", border:"none", cursor:"pointer",
+              display:"flex", flexDirection:"column", alignItems:"center",
               padding:"4px 8px", minWidth:"56px", flexShrink:0,
-              color: paginaActual === tab.id ? "#4a3728" : "#b89a7a", 
-              borderTop: paginaActual === tab.id ? "2px solid #b89a7a" : "2px solid transparent" 
+              color: paginaActual === tab.id ? "#4a3728" : "#b89a7a",
+              borderTop: paginaActual === tab.id ? "2px solid #b89a7a" : "2px solid transparent"
             }}>
             <span style={{ fontSize:"18px" }}>{tab.emoji}</span>
             <span style={{ fontSize:"9px", marginTop:"2px", whiteSpace:"nowrap" }}>{tab.label}</span>
           </button>
         ))}
       </div>
+    </div>
+  );
+}
+
+export default App;
