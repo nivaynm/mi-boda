@@ -12,6 +12,7 @@ import RetoFotos from "./paginas/RetoFotos";
 import Ruleta from "./paginas/Ruleta";
 import Sorteo from "./paginas/Sorteo";
 import Invitados from "./paginas/Invitados";
+import Vestimenta from "./paginas/Vestimenta";
 import { textos } from "./traducciones";
 
 export const IdiomaContext = createContext("es");
@@ -20,10 +21,11 @@ const getTabs = (t) => [
   { id:"inicio", label: t.inicio, emoji:"💍" },
   { id:"programa", label: t.programa, emoji:"🕐" },
   { id:"lugar", label: t.lugar, emoji:"📍" },
-  { id:"menu", label: t.menu, emoji:"🍽️" },
   { id:"transporte", label: t.transporte, emoji:"🚌" },
   { id:"confirmacion", label: t.confirmacion, emoji:"✅" },
+  { id:"menu", label: t.menu, emoji:"🍽️" },
   { id:"regalo", label: t.regalo, emoji:"🏦" },
+  { id:"vestimenta", label: t.idioma === "en" ? "Dress Code" : "Vestimenta", emoji:"👗" },
   { id:"galeria", label: t.galeria, emoji:"📷" },
   { id:"mensajes", label: t.mensajes, emoji:"💬" },
   { id:"reto", label: t.reto, emoji:"📸" },
@@ -53,6 +55,7 @@ function App() {
       case "ruleta": return <Ruleta t={t} />;
       case "sorteo": return <Sorteo t={t} />;
       case "invitados": return <Invitados t={t} />;
+      case "vestimenta": return <Vestimenta t={t} />;
       default: return <Inicio t={t} />;
     }
   };
