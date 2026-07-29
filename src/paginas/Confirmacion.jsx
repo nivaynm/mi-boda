@@ -93,14 +93,20 @@ function Confirmacion({ t }) {
               <p style={{ fontSize:"12px", color:"#b89a7a", letterSpacing:"2px", margin:"0 0 10px" }}>ACOMPAÑANTE {i + 1}</p>
               <input type="text" placeholder={t.nombreApellidos} value={a.nombre} onChange={(e) => actualizarDato(i, "nombre", e.target.value)} style={{ ...inputStyle, marginBottom:"8px" }} />
               <input type="number" placeholder="Edad" value={a.edad} onChange={(e) => actualizarDato(i, "edad", e.target.value)} style={{ ...inputStyle, marginBottom:"8px" }} />
-              <select value={a.menu} onChange={(e) => actualizarDato(i, "menu", e.target.value)} style={selectStyle}>
-                <option value="">Selecciona menú</option>
-                <option value="adulto">Menú adulto</option>
-                <option value="nino">Menú niño (menores de 12 años)</option>
+              <select value={a.tipo || ""} onChange={(e) => actualizarDato(i, "tipo", e.target.value)} style={{ ...selectStyle, marginBottom:"8px" }}>
+                <option value="">¿Adulto o niño?</option>
+                <option value="adulto">Adulto</option>
+                <option value="nino">Niño</option>
               </select>
-            </div>
-          ))}
-        </div>
+
+              {a.tipo === "adulto" && (
+                <select value={a.menu || ""} onChange={(e) => actualizarDato(i, "menu", e.target.value)} style={selectStyle}>
+                  <option value="">Selecciona plato principal</option>
+                  <option value="carne">🥩 Carne</option>
+                  <option value="pescado">🐟 Pescado</option>
+                  <option value="vegetariano">🥗 Vegetariano</option>
+                </select>
+              )}
 
         <div style={{ background:"white", border:"1px solid #e8d5c4", borderRadius:"14px", padding:"24px", marginBottom:"16px" }}>
           <p style={{ color:"#b89a7a", letterSpacing:"3px", fontSize:"11px", margin:"0 0 14px" }}>{t.autobus}</p>
