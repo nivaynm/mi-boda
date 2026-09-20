@@ -38,36 +38,50 @@ function Invitados({ t }) {
 
     confirmaciones.forEach(c => {
       const fecha = c.fecha?.toDate ? c.fecha.toDate().toLocaleDateString("es-ES") : "";
+      const autobusPrincipal = c.autobus === "ida-vuelta" ? "Ida y vuelta" : c.autobus === "ida" ? "Solo ida" : c.autobus === "vuelta" ? "Solo vuelta" : "No";
+      
+      // Fila del invitado principal
       filas.push({
         "Nombre": c.nombre || "",
         "Tipo": "Principal",
+        "Edad": "",
         "Plato": c.platoPrincipal === "carne" ? "Carne" : c.platoPrincipal === "pescado" ? "Pescado" : c.platoPrincipal === "vegetariano" ? "Vegetariano" : "",
-        "Autobús": c.autobus === "ida-vuelta" ? "Ida y vuelta" : c.autobus === "ida" ? "Solo ida" : c.autobus === "vuelta" ? "Solo vuelta" : "No",
-        "Alergias": c.alergias || "Ninguna",
-        "Nº acompañantes": c.acompanantes || 0,
-        "Fecha confirmación": fecha
+        "Autobús": autobusPrincipal,
+        "Alergias / Observaciones": c.alergias || "-",
+        "Fecha de confirmación": fecha
       });
 
+      // Filas de acompañantes
       if (c.datosAcompanantes && c.datosAcompanantes.length > 0) {
         c.datosAcompanantes.forEach((a, i) => {
           filas.push({
             "Nombre": a.nombre || `Acompañante ${i + 1} de ${c.nombre}`,
-            "Tipo": a.tipo === "nino" ? "Niño" : "Adulto",
-            "Plato": a.tipo === "nino" ? "Menú niño" : a.menu === "carne" ? "Carne" : a.menu === "pescado" ? "Pescado" : a.menu === "vegetariano" ? "Vegetariano" : "",
-            "Autobús": "",
-            "Alergias": "",
-            "Nº acompañantes": "",
-            "Fecha confirmación": ""
+            "Tipo": a.tipo === "nino" ? "Niño" : a.tipo === "adulto" ? "Adulto" : "",
+            "Edad": a.edad || "",
+            "Plato": a.tipo === "nino" ? "Menú niño" : a.menu === "carne" ? "Carne" : a.menu === "pescado" ? "Pescado" : a.menu === "vegetariano" ? "Vegetariano" : "-",
+            "Autobús": "-",
+            "Alergias / Observaciones": "-",
+            "Fecha de confirmación": "-"
           });
         });
       }
     });
 
     const hoja = XLSX.utils.json_to_sheet(filas);
-    hoja["!cols"] = [{ wch:30 }, { wch:12 }, { wch:15 }, { wch:15 }, { wch:35 }, { wch:18 }, { wch:20 }];
+    // Ajustar ancho de columnas
+    hoja["!cols"] = [
+      { wch: 35 },  // Nombre
+      { wch: 12 },  // Tipo
+      { wch: 8 },   // Edad
+      { wch: 15 },  // Plato
+      { wch: 15 },  // Autobús
+      { wch: 40 },  // Alergias
+      { wch: 18 }   // Fecha
+    ];
+    
     const libro = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(libro, hoja, "Invitados");
-    XLSX.writeFile(libro, "invitados-boda.xlsx");
+    XLSX.writeFile(libro, `invitados-boda-${new Date().toLocaleDateString("es-ES").replace(/\//g, "-")}.xlsx`);
   };
 
   const totalPersonas = confirmaciones.reduce((acc, c) => acc + 1 + (parseInt(c.acompanantes) || 0), 0);
