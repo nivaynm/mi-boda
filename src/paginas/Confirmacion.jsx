@@ -150,20 +150,24 @@ function Confirmacion({ t }) {
                 <option value="nino">{es ? "Niño" : "Child"}</option>
               </select>
 
-              {/* Plato solo para adultos */}
-              {a.tipo === "adulto" && (
-                <select value={a.menu || ""} onChange={(e) => actualizarDato(i, "menu", e.target.value)} style={selectStyle}>
-                  <option value="">{es ? "Selecciona plato principal" : "Select main course"}</option>
-                  <option value="carne">{es ? "🥩 Carne" : "🥩 Meat"}</option>
-                  <option value="pescado">{es ? "🐟 Pescado" : "🐟 Fish"}</option>
-                  <option value="vegetariano">{es ? "🥗 Vegetariano" : "🥗 Vegetarian"}</option>
-                </select>
-              )}
+              {/* Selecciona menú - para adultos Y niños */}
+              {a.tipo && (
+                <>
+                  {a.tipo === "adulto" && (
+                    <select value={a.menu || ""} onChange={(e) => actualizarDato(i, "menu", e.target.value)} style={selectStyle}>
+                      <option value="">{es ? "Selecciona plato principal" : "Select main course"}</option>
+                      <option value="carne">{es ? "🥩 Carne" : "🥩 Meat"}</option>
+                      <option value="pescado">{es ? "🐟 Pescado" : "🐟 Fish"}</option>
+                      <option value="vegetariano">{es ? "🥗 Vegetariano" : "🥗 Vegetarian"}</option>
+                    </select>
+                  )}
 
-              {a.tipo === "nino" && (
-                <div style={{ background:"#f0f7f0", borderRadius:"8px", padding:"10px 14px", fontSize:"13px", color:"#5d8a3c" }}>
-                  {es ? "✓ Menú niño asignado" : "✓ Children's menu assigned"}
-                </div>
+                  {a.tipo === "nino" && (
+                    <div style={{ background:"#f0f7f0", borderRadius:"8px", padding:"10px 14px", fontSize:"13px", color:"#5d8a3c" }}>
+                      {es ? "✓ Menú niño asignado automáticamente" : "✓ Children's menu assigned automatically"}
+                    </div>
+                  )}
+                </>
               )}
             </div>
           ))}
